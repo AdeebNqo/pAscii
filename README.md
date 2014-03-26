@@ -6,7 +6,10 @@ art using a black and white image. It works in a console.
 
 ## Example usage (DEMO)
 
-The result of the image 'pic.jpg' is the following:
+Original picture:
+![alt tag](https://raw.github.com/AdeebNqo/pAscii/master/pic.jpg)
+
+Ascii:
 
 		...........,,........,L$$$$$$$$$$$$v........,;,...
 		..........,,,.......,vFE$$$$$$$$$$$l.......,;;,...
@@ -46,3 +49,5 @@ The result of the image 'pic.jpg' is the following:
 		...................E$$$$$$$$$$$$$$$!..............
 		...................F$$$$$$$$$$$$$$$L..............
 		...................v$$$$$$$$$$$$$$$$..............
+
+https://github.com/AdeebNqo/pAscii.git
