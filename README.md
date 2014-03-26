@@ -7,6 +7,7 @@ art using a black and white image. It works in a console.
 ## Example usage (DEMO)
 
 Original picture:
+
 ![alt tag](https://raw.github.com/AdeebNqo/pAscii/master/pic.jpg)
 
 Ascii:
@@ -50,4 +51,4 @@ Ascii:
 		...................F$$$$$$$$$$$$$$$L..............
 		...................v$$$$$$$$$$$$$$$$..............
 
-https://github.com/AdeebNqo/pAscii.git
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/AdeebNqo/pascii/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
