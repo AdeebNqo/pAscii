@@ -4,18 +4,39 @@ import javax.imageio.ImageIO;
 import java.awt.Color;
 class pAscii{
 	String path;
-	
+	private String[][] pixels;
+	int h; //height of img
+	int w; //width of img
 	public pAscii(String path){
 		this.path = path;
 	}
-	public void start(){
+	public String[][] getPixelArray(){
 		try{
+			
+			//reading in image
 			File imgFile = new File(path);
 			BufferedImage img = ImageIO.read(imgFile);
-			int h = img.getHeight();
-			int w = img.getWidth();
 			
-			String[][] pixels = new String[h][w];
+			//converting image to black and white
+			for (int x = 0; x < img.getWidth(); ++x){
+    				for (int y = 0; y < img.getHeight(); ++y)
+    					{
+        				int rgb = img.getRGB(x, y);
+        				int r = (rgb >> 16) & 0xFF;
+					int g = (rgb >> 8) & 0xFF;
+        				int b = (rgb & 0xFF);
+
+        				int grayLevel = (r + g + b) / 3;
+        				int gray = (grayLevel << 16) + (grayLevel << 8) + grayLevel; 
+        				img.setRGB(x, y, gray);
+			    }
+			}
+
+			//creating pixel array from picture
+			h = img.getHeight();
+			w = img.getWidth();
+			
+			pixels = new String[h][w];
 			for (int i=0;i<h;i++){
 				for (int j=0;j<w;j++){
 					int pix = img.getRGB(j,i);
@@ -29,15 +50,21 @@ class pAscii{
 					pixels[i][j] = ""+getChar(avg);
 				}
 			}
-			//printing array
-			for (int i=0;i<h;i++){
-				for (int j=0;j<w;j++){
-					System.out.print(pixels[i][j]);
-				}
-				System.out.println();
-			}
+			return pixels;
+		
 		}catch(Exception e){
 			e.printStackTrace();
+		}
+		return null;
+	}
+	public void printAscii(){
+		//printing array
+		
+		for (int i=0;i<h;i++){
+			for (int j=0;j<w;j++){
+				System.out.print(pixels[i][j]);
+			}
+			System.out.println();
 		}
 	}
 	public char getChar(float Avg){
