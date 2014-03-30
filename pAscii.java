@@ -4,18 +4,18 @@ import javax.imageio.ImageIO;
 import java.awt.Color;
 class pAscii{
 	String path;
-	
+	private String[][] pixels;
 	public pAscii(String path){
 		this.path = path;
 	}
-	public void start(){
+	public void getPixelArray(){
 		try{
 			File imgFile = new File(path);
 			BufferedImage img = ImageIO.read(imgFile);
 			int h = img.getHeight();
 			int w = img.getWidth();
 			
-			String[][] pixels = new String[h][w];
+			pixels = new String[h][w];
 			for (int i=0;i<h;i++){
 				for (int j=0;j<w;j++){
 					int pix = img.getRGB(j,i);
@@ -29,15 +29,19 @@ class pAscii{
 					pixels[i][j] = ""+getChar(avg);
 				}
 			}
-			//printing array
-			for (int i=0;i<h;i++){
-				for (int j=0;j<w;j++){
-					System.out.print(pixels[i][j]);
-				}
-				System.out.println();
-			}
+			return pixels;
+		
 		}catch(Exception e){
 			e.printStackTrace();
+		}
+	}
+	public void printAscii(){
+		//printing array
+		for (int i=0;i<h;i++){
+			for (int j=0;j<w;j++){
+				System.out.print(pixels[i][j]);
+			}
+			System.out.println();
 		}
 	}
 	public char getChar(float Avg){
